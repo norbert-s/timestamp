@@ -1,5 +1,15 @@
 /****** Main Styling ******/
+body,html{
+	padding:0;
+	margin:0;
+}
+head{
+	margin:auto;
+}
 
+title{
+	text-align:center
+}
 body {
 	font-family: 'Roboto', sans-serif;
 	font-size: 16px;
@@ -10,12 +20,14 @@ body {
 }
 
 .container {
-	padding: 0;
+	padding: 10px;
+	margin:auto;
 	margin-top: 40px;
+	display:grid;
 }
 
 h3 {
-  margin-top: 30px;
+	margin-top: 30px;
 }
 
 .footer {
@@ -23,29 +35,17 @@ h3 {
 }
 
 .user-stories {
-  position: relative;
-  text-align: justify;
-  max-width: 700px;
-  margin: 15px auto;
+	margin:auto;
+	position: relative;
+	text-align: justify;
+	max-width: 700px;
+	padding:10px;
+
 }
 code {
-  font-family: monospace;
-  padding: 2px;
-  color: black;
-  background-color: #fff;
-}
-ol {
-	list-style-position: outside;
-}
-ul {
-	list-style-type: none;
-}
-
-li {
-  margin-bottom: 0.5em;
-}
-.user-stories li {
-  margin-bottom: 1em;
+	font-family: monospace;
+	color: black;
+	background-color: #fff;
 }
 
 a {
