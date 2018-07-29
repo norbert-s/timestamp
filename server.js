@@ -33,7 +33,7 @@ let baseOne= app.get('/*', (req, res) =>{
 
     let onlyNum = isNumber(barePath);
 
-    let validDate= ifValidDate(barePath,res);
+    // let validDate= ifValidDate(barePath,res);
     //if barePath contains only numbers
     var trimedQueryString = barePath.replace(/%20/g, ' ');
     if(onlyNum){
@@ -41,14 +41,16 @@ let baseOne= app.get('/*', (req, res) =>{
         let date = new Date(unix);
         res.json({unix:unix,natural:date.toUTCString()});
     }
-    if(validDate){
+    if(!onlyNum ){
         let unix = Date.parse(trimedQueryString);
-        res.json({unix:unix, natural:trimedQueryString});
+        let date = new Date(unix);
+        res.json({unix:unix, natural:date.toUTCString()});
     }
-    if(!validDate){
-        valMinPath(res);
-    }
+    /*if(!validDate){
+      valMinPath(res);
+    }*/
 });
+
 
 let onlyLetters=(barePath,res)=>{
     let regex = /^[a-zA-Z]+$/g;
@@ -62,11 +64,11 @@ let valMinPath = function(res){
 }
 
 
-let ifValidDate=(barePath,res)=>{
-    if(Date.parse(barePath)){
-        return true;
-    }
-};
+/*let ifValidDate=(barePath,res)=>{
+  if(Date.parse(barePath)){
+    return true;
+  }
+};*/
 
 let isNumber=(barePath)=>{
     let regex = /^[0-9]*$/g;
@@ -83,8 +85,6 @@ let checkCorrPath=(path,plusUrl)=>{
     if(path.includes(plusUrl)) corrPath= true;
     return corrPath;
 }
-
-
 var listener = app.listen(process.env.PORT, function () {
     console.log('Your app is listening on port ' + listener.address().port);
 });
